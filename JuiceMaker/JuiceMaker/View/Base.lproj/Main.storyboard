@@ -243,13 +243,13 @@
         <!--View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FruitStockViewController" id="Yu1-lM-nqp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="HY6-Yu-hLe">
-                                <rect key="frame" x="60" y="119" width="726" height="152.66666666666666"/>
+                                <rect key="frame" x="60" y="118.99999999999999" width="726" height="152.66666666666666"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="qvM-UH-RUn">
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="152.66666666666666"/>
