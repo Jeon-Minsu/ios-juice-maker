@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = "재고수정" // 이름 코드로 바꾸기
+        navigationController?.navigationBar.topItem?.backButtonTitle = "뒤로가기"   // 두번째 뷰에서 backButton 타이틀 설정
     }
     
     @IBOutlet weak var strawberryStockButton: UILabel!
