@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--맛있는 쥬스를 만들어 드려요!-->
+        <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,16 +238,17 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="nay-JG-MHu"/>
+                                <action selector="editStock:" destination="BYZ-38-t0r" id="xJL-eb-QAw"/>
+                                <segue destination="Yu1-lM-nqp" kind="show" id="3Do-6A-Q2d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bananaStockButton" destination="gvk-pA-Lw5" id="ZjB-m0-lqb"/>
-                        <outlet property="kiwiStockButton" destination="FZq-de-TJG" id="nBz-Uj-qRf"/>
-                        <outlet property="mangoStockButton" destination="3Ce-SU-JeH" id="yQn-0E-rk6"/>
-                        <outlet property="pineappleStockButton" destination="ccQ-Dk-PuY" id="OHA-RZ-S5W"/>
-                        <outlet property="strawberryStockButton" destination="Qas-vP-td6" id="2tW-RF-sRo"/>
+                        <outlet property="bananaStockLabel" destination="gvk-pA-Lw5" id="ZjB-m0-lqb"/>
+                        <outlet property="kiwiStockLabel" destination="FZq-de-TJG" id="nBz-Uj-qRf"/>
+                        <outlet property="mangoStockLabel" destination="3Ce-SU-JeH" id="yQn-0E-rk6"/>
+                        <outlet property="pineappleStockLabel" destination="ccQ-Dk-PuY" id="OHA-RZ-S5W"/>
+                        <outlet property="strawberryStockLabel" destination="Qas-vP-td6" id="2tW-RF-sRo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -272,11 +273,11 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--Fruit Stock View Controller-->
+        <!--FruitStockViewController-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" customClass="FruitStockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
+                <viewController storyboardIdentifier="FruitStockViewController" title="FruitStockViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu1-lM-nqp" customClass="FruitStockViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="FruitStockViewController" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -301,9 +302,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="120.66666666666669" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="changeStrawberryStockButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="yFn-uH-y1F"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -325,9 +323,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="120.66666666666669" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="changeBananaStockButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Aol-2t-mpW"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -349,9 +344,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="120.66666666666669" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="changePineappleStockButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="iFl-SW-77v"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -373,9 +365,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="120.66666666666669" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="changeKiwiStockButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="uiN-Ph-whe"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -397,9 +386,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="120.66666666666669" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="changeMangoStockButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="mle-go-HOV"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -413,14 +399,7 @@
                             <constraint firstItem="HY6-Yu-hLe" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="Aq5-MY-OAU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
-                    <connections>
-                        <outlet property="changKiwiStock" destination="ZDv-1m-HBY" id="ZSf-ye-Dbe"/>
-                        <outlet property="changeBananaStock" destination="gKu-86-RhI" id="dfk-WL-fUQ"/>
-                        <outlet property="changeMangoStock" destination="YJI-ER-LJR" id="DjR-Cr-QLu"/>
-                        <outlet property="changePineappleStock" destination="MpT-VW-hCb" id="Nl8-hX-gYa"/>
-                        <outlet property="changeStrawberryStock" destination="0yV-kn-zaT" id="bG8-U3-hVQ"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Title" id="SLT-An-lVO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
@@ -447,7 +426,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nay-JG-MHu"/>
+        <segue reference="3Do-6A-Q2d"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
