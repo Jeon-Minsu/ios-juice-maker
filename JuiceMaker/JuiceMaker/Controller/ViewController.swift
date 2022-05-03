@@ -6,10 +6,14 @@
 
 import UIKit
 
+let center = NotificationCenter.default
+let juiceMaker = JuiceMaker()
+
 class ViewController: UIViewController {
     
-    private let juiceMaker = JuiceMaker()
+
     
+
     @IBOutlet weak var strawberryLabel: UILabel?
     @IBOutlet weak var bananaLabel: UILabel?
     @IBOutlet weak var pineappleLabel: UILabel?
@@ -20,9 +24,50 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateFruitStock()
+        center.addObserver(self, selector: #selector(update), name: .changeStock, object: nil)
     }
     
-    private func updateFruitStock() {
+    @objc func update(_ notification: Notification) {
+//        strawberryLabel?.text = controller.text1
+        print("success")
+        
+        guard let userinfo = notification.userInfo else {
+            return
+        }
+        guard let kind = userinfo["종류"] as? Fruit else {
+            return
+        }
+        
+        print(kind)
+        
+
+        guard let stock = userinfo["재고"] as? String else {
+            return
+        }
+
+        print(stock)
+        
+        try? juiceMaker.fruitStore.changeStock(fruit: kind, amount: Int(stock) ?? 0)
+        
+        var label: UILabel {
+            switch kind {
+            case .strawberry:
+                return strawberryLabel!
+            case .banana:
+                return bananaLabel!
+            case .pineapple:
+                return pineappleLabel!
+            case .kiwi:
+                return kiwiLabel!
+            case .mango:
+                return mangoLabel!
+            }
+        }
+        
+        label.text = String(juiceMaker.fruitStore.fruitWarehouse[kind] ?? 0)
+    }
+    
+    func updateFruitStock() {
         strawberryLabel?.text = String(juiceMaker.fruitStore.fruitWarehouse[.strawberry] ?? 0)
         bananaLabel?.text = String(juiceMaker.fruitStore.fruitWarehouse[.banana] ?? 0)
         pineappleLabel?.text = String(juiceMaker.fruitStore.fruitWarehouse[.pineapple] ?? 0)
@@ -76,8 +121,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func editStock(_ sender: UIBarButtonItem) {
-        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "FruitStockViewController") else { return }
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "FruitStockViewController") as? FruitStockViewController else { return }
+        
+        controller.text1 = strawberryLabel?.text ?? ""
+        controller.text2 = bananaLabel?.text ?? ""
+        controller.text3 = pineappleLabel?.text ?? ""
+        controller.text4 = kiwiLabel?.text ?? ""
+        controller.text5 = mangoLabel?.text ?? ""
         
         self.navigationController?.pushViewController(controller, animated: true)
+    
+        
     }
+    
+}
+
+extension Notification.Name {
+    static let changeStock = Notification.Name("changeStock")
 }
